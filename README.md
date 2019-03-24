@@ -9,7 +9,8 @@ CR App 000：莊房有冇人
 簡單地更新網頁，比人預先知道有冇人響度
 
 ## Languages / Tools involved
-
+| Tools | Role |
+| --- | --- |
 | PHP | backend |
 | JS/HTML/CSS | frontend |
 | Heroku | Hosting |
