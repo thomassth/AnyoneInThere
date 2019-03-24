@@ -1,0 +1,50 @@
+<html>
+
+<head>
+    <title>莊房有冇人?</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script language="javascript">
+
+        // This just displays the first parameter passed to it
+        // in an alert.
+        function show(data) {
+            document.getElementById("stat").innerHTML = data.stat;
+            document.getElementById("lastUpdate").innerHTML = data.time;
+
+            if (data.stat == "有人") {
+                document.body.setAttribute("id", "yes");
+            } else if (data.stat == "冇人") {
+                document.body.setAttribute("id", "no");
+            }
+            setTimeout(run,5000);
+        }
+
+        function run() {
+            $.getJSON(
+                "/test.php", // The server URL 
+                {locate:"VA323"}, // Data you want to pass to the server.
+                show // The function to call on completion.
+            );
+        }
+
+        // We'll run the AJAX query when the page loads.
+        window.onload = run;
+
+    </script>
+
+</head>
+
+<body>
+    <div class='fullscreenDiv'>
+        <div class="centered">
+            <h1>莊房有冇人?</h1>
+            <h1 id="stat">LOAD 緊</h1>
+            <p id>Last Updated: <span id="lastUpdate">N/A</span></p>
+        </div>
+    </div>
+</body>
+
+</html>

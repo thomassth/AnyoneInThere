@@ -1,0 +1,75 @@
+<html>
+
+<head>
+    <title>莊房有冇人?</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles2.css">    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script language="javascript">
+
+    // This just displays the first parameter passed to it
+    // in an alert.
+    function show(data) {
+        $("#"+data.place).find('.stat').html(data.stat);
+        $("#"+data.place).find('.lastUpdate').html(data.time);
+
+        if (data.stat == "有人") {
+            document.getElementById(data.place).setAttribute("class", "yes");
+        } else if (data.stat == "冇人") {
+            document.getElementById(data.place).setAttribute("class", "no");
+        }
+        setTimeout(run,5000);
+    }
+
+    function run(room) {
+        var input = room;
+        $.getJSON(
+            "/test.php", // The server URL 
+            {"locate":input}, // Data you want to pass to the server.
+            show // The function to call on completion.
+        );
+    }
+
+    // We'll run the AJAX query when the page loads.
+    window.onload = run("VA323");
+
+</script>
+
+</head>
+
+<body>
+        <table>
+                <caption>乜房有冇人?</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">位置</th>
+                    <th scope="col">最後更新</th>
+                    <th scope="col">狀態</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr id="VA323">
+                    <td scope="row" data-label="位置">VA323</td>
+                    <td data-label="最後更新"><span class="lastUpdate">N/A</span></td>
+                    <td data-label="狀態"><span class="stat">LOAD 緊</span></td>
+                  </tr>
+                  <tr>
+                    <td scope="row" data-label="位置">XXX</td>
+                    <td data-label="最後更新"><span class="lastUpdate">N/A</span></td>
+                    <td data-label="狀態"><span class="stat">LOAD 緊</span></td>
+                  </tr>
+                  <tr>
+                    <td scope="row" data-label="位置">XXX</td>
+                    <td data-label="最後更新"><span class="lastUpdate">N/A</span></td>
+                    <td data-label="狀態"><span class="stat">LOAD 緊</span></td>
+                  </tr>
+                  <tr>
+                    <td scope="row" data-label="位置">XXX</td>
+                    <td data-label="最後更新"><span class="lastUpdate">N/A</span></td>
+                    <td data-label="狀態"><span class="stat">LOAD 緊</span></td>
+                  </tr>
+                </tbody>
+              </table>
+</body>
+
+</html>

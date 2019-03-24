@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <title>莊房有冇人?</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script language="javascript">
+
+        // This just displays the first parameter passed to it
+        // in an alert.
+        function show(data) {
+            document.getElementById("stat").innerHTML = data.stat;
+            document.getElementById("lastUpdate").innerHTML = data.time;
+
+        }
+
+        function run(SENDING) {
+            $.getJSON(
+                "../test.php", // The server URL 
+                { id: SENDING , locate:"VA323"}, // Data you want to pass to the server.
+                show // The function to call on completion.
+            );
+        }
+        function runBlank() {
+            $.getJSON(
+                "../test.php", // The server URL 
+                {locate:"VA323"}, // Data you want to pass to the server.
+                show // The function to call on completion.
+            );
+        }
+
+        // We'll run the AJAX query when the page loads.
+        window.onload = runBlank;
+
+    </script>
+
+</head>
+
+<body>
+        <div class='fullscreenDiv'>
+    <div class="centered">
+        <h1>莊房有冇人?</h1>
+        <h1 id="stat">未撳</h1>
+        <p id>Last Updated: <span id="lastUpdate">N/A</span></p>
+        <div class="button" id="yes" onclick="run('yes')">有人</div>
+        <div class="button" id="no" onclick="run('no')">冇人</div>
+        <a href="../index.html"><div class="button" onclick="" >單一顯示</div></a>
+        <a href="../dashboard.html"><div class="button" onclick="" >整體顯示</div></a>
+    </div>
+</div>
+</body>
+
+</html>
