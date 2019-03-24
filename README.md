@@ -8,6 +8,13 @@ CR App 000：莊房有冇人
 ## 解法
 簡單地更新網頁，比人預先知道有冇人響度
 
+## Languages / Tools involved
+
+| PHP | backend |
+| JS/HTML/CSS | frontend |
+| Heroku | Hosting |
+| Cloudinary | Data storage |
+
 ## ToDo
 - [ ] 整合時間表
 - [x] 自動更新
